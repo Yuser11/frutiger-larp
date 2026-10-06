@@ -1,133 +1,263 @@
-<html lang="pt-br" style="overflow: hidden;">
+<!-- 
+Projeto: 
+Autor:
+Fontes:
+-->
+<!doctype html>
+<html lang="pt-BR">
 
 <head>
-    <link href="frutiger.css" rel="stylesheet">
-    <title>Teste frutigeraero</title>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/webp" href="aurora.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description" content="Painel controle Smart Home">
+    <meta name="keywords" content="IOT, Smart Home">
+    <meta name="author" content="Robson">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Painel - Smart Home</title>
+    <link href="css/bootstrap-5.3.7/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/css/bootstrap5-toggle.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/js/bootstrap5-toggle.ecmas.min.js"></script>
+    <script src="https://unpkg.com/mqtt@5.14.0/dist/mqtt.min.js"></script>
 
-    <!-- Primary Meta Description -->
-    <meta name="descrhiption"
-        content="Freelance Web Developer, Graphic Designer, and Video Editor. Here you can find samples of previous work such as software, graphics, music, video editing, and more! Feel free to stick around and enjoy my website as a calming checkpoint.">
-
-    <meta name="keywords"
-        content="HTML, CSS, JavaScript, React, Frutiger aero, Aero, Website, Graphic Design, Make Website, Buy Website, Video Editing, Video Editor, Web Developer">
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.craftedbyarjun.com">
-    <meta name="twitter:title" content="Crafted By Arjun">
-    <meta name="twitter:description"
-        content="Freelance Web Developer, Graphic Designer, and Video Editor. Here you can find samples of previous work such as software, graphics, music, video editing, and more! Feel free to stick around and enjoy my website as a calming checkpoint.">
-    <meta name="twitter:image" content="https://www.craftedbyarjun.com/OSlogo.webp">
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Crafted By Arjun">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.craftedbyarjun.com">
-    <meta property="og:image" content="https://www.craftedbyarjun.com/OSlogo.webp">
-    <meta property="og:description"
-        content="Freelance Web Develhoper, Graphic Designer, and Video Editor. Here you can find samples of previous work such as software, graphics, music, video editing, and more! Feel free to stick around and enjoy my website as a calming checkpoint.">
-
-    <meta name="theme-color" content="#00ccb1">
-
-    <title>Crafted By Arjun</title>
-    <link rel="stylesheet" crossorigin="" href="frutiger.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body style="overflow: hidden;">
-    <div id="root"><canvas height="730" width="887" data-testid="SnowfallCanvas"
-            style="pointer-events: none; background-color: transparent; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; opacity: 0.5; transform: scaleX(-1);"></canvas>
-        <div class="_hueContainer_bbf3l_7">
-            <div class="_mainContainer_bbf3l_89">
-                <div class="_mainContainerFlex_bbf3l_113">
-                    <div class="_mainContainerTopRow_bbf3l_161">
-                                    
-                        <div class="_mainTitle_bbf3l_331"> Ambientes: </div>
-                        
+<body>
+
+    <!-- Céu Frutiger Aero (bolhas decorativas) -->
+    <div class="aero-bolhas" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="container-fluid">
+        <div class="container">
+
+            <!-- Cabeçalho -->
+            <header class="aero-header my-4">
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="fa-solid fa-house-signal aero-header-icon"></i>
+                        <div>
+                            <h1 class="aero-title mb-0">Lar Digital</h1>
+                            <p class="aero-subtitle mb-0">Painel de controle · Smart Home</p>
+                        </div>
+                    </div>
+                    <div class="aero-status-broker">
+                        <span class="aero-status-label">Broker</span>
+                        <i id="status_broker" class="fa-solid fa-power-off"></i>
                     </div>
                 </div>
-                <div class="_mainContainerBody_bbf3l_120">
-                    <div class="_dividerLong_bbf3l_470"></div>
-                    <div class="_mainContainerIntroduction_bbf3l_127"><img draggable="false" class="_msnIcon_bbf3l_530"
-                            src="/arjunOSnew.webp">
-                        
-                        
-                    <div class="_dividerLong_bbf3l_470"></div>
-                    <div style="position: relative; width: 100%; display: flex; justify-content: center;">
-                        <div>
-                            <div class="_gallery_bbf3l_226"><span>
-                                    <div class="_mainContainerCard_n08h0_1">
-<div class="col">
-                            <div class="card">
+            </header>
+
+            <div class="row mt-3 g-4">
+
+                <!-- Clima -->
+                <div class="col-12 col-md-3">
+                    <section class="aero-panel clima h-100">
+                        <div class="aero-panel-shine"></div>
+                        <h2 class="aero-section-title mb-3">
+                            <i class="fa-solid fa-cloud-sun me-2"></i>Clima
+                        </h2>
+                        <div id="cidade" class="h2 p-1 aero-clima-cidade"></div>
+                        <div id="condicao" class="h4 p-1 aero-clima-item">Condição: Buscando...</div>
+                        <div id="temperatura" class="h4 p-1 aero-clima-item">Temperatura: Buscando...</div>
+                        <div id="umidade" class="h4 p-1 aero-clima-item">Umidade: Buscando...</div>
+                    </section>
+                </div>
+
+                <!-- Ambientes -->
+                <div class="col-md-9">
+                    <h2 class="aero-section-title mb-3">
+                        <i class="fa-solid fa-sliders me-2"></i>Ambientes
+                    </h2>
+                    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3">
+
+                        <!-- Card Sala -->
+                        <div class="col">
+                            <div class="card aero-card">
                                 <div class="card-body text-center">
-                                    <div class="card-title">Sala</div>
+                                    <div class="card-title aero-card-title">Sala</div>
                                     <i id="icon_lampada_sala" class="fas fa-lightbulb fs-1 text-warning"></i>
-                                    <div>
+                                    <div class="mt-3">
                                         <input id="btn_sala" type="checkbox" checked data-toggle="toggle"
                                             data-size="xs">
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!--FIM Card Sala -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Quarto</div>
+                                    <i id="icon_lampada_quarto" class="fas fa-lightbulb fs-1"></i>
+                                    <div class="mt-3">
+                                        <input id="btn_quarto" type="checkbox" checked data-toggle="toggle"
+                                            data-size="xs">
                                     </div>
-                                </span><span>
-                                    <div class="_mainContainerCard_n08h0_1"><img src="/twitterIcon.webp"
-                                            class="_cardIcon_n08h0_48">
-                                        <div>Twitter</div>
-                                    </div>
-                                </span><span>
-                                    <div class="_mainContainerCard_n08h0_1"><img src="/redditIcon.webp"
-                                            class="_cardIcon_n08h0_48">
-                                        <div>Reddit</div>
-                                    </div>
-                                </span><span>
-                                    <div class="_mainContainerCard_n08h0_1"><img src="/mailIcon.webp"
-                                            class="_cardIcon_n08h0_48">
-                                        <div>Gmail</div>
-                                    </div>
-                                </span><span>
-                                    <div class="_mainContainerCard_n08h0_1"><img src="/whatsappIcon.webp"
-                                            class="_cardIcon_n08h0_48">
-                                        <div>Whatsapp</div>
-                                    </div>
-                                </span><span>
-                                    <div class="_mainContainerCard_n08h0_1"><img src="/robloxIcon.webp"
-                                            class="_cardIcon_n08h0_48">
-                                        <div>Roblox</div>
-                                    </div>
-                                </span><span>
-                                    <div class="_mainContainerCard_n08h0_1"><img src="/pinteresticon.webp"
-                                            class="_cardIcon_n08h0_48">
-                                        <div>Pinterest</div>
-                                    </div>
-                                </span><span>
-                                    <div class="_mainContainerCard_n08h0_1"><img src="/discordIcon.webp"
-                                            class="_cardIcon_n08h0_48">
-                                        <div>Discord</div>
-                                    </div>
-                                </span><span>
-                                    <div class="_mainContainerCard_n08h0_1"><img src="/arjunIcon.webp"
-                                            class="_cardIcon_n08h0_48">
-                                        <div>Craftedbyarjun</div>
-                                    </div>
-                                </span><span>
-                                    <div class="_mainContainerCard_n08h0_1"><img
-                                            src="https://www.frutiger-aero.online/icons/teddyorb_noglow.webp"
-                                            class="_cardIcon_n08h0_48">
-                                        <div>FA Hub</div>
-                                    </div>
-                                </span></div>
+                                </div>
+                            </div>
                         </div>
+                        <!--FIM Card -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Cozinha</div>
+                                    <i id="icon_lampada_cozinha" class="fas fa-lightbulb fs-1"></i>
+                                    <div class="mt-3">
+                                        <input id="btn_cozinha" type="checkbox" checked data-toggle="toggle"
+                                            data-size="xs">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIM Card -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Passarela</div>
+                                    <i id="icon_lampada_passarela" class="fas fa-lightbulb fs-1"></i>
+                                    <div class="mt-3">
+                                        <input id="btn_passarela" type="checkbox" checked data-toggle="toggle"
+                                            data-size="xs">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIM Card -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Jardim</div>
+                                    <i id="icon_lampada_jardim" class="fas fa-lightbulb fs-1"></i>
+                                    <div class="mt-3">
+                                        <input id="btn_jardim" type="checkbox" checked data-toggle="toggle"
+                                            data-size="xs">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIM Card -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Bomba Água</div>
+                                    <i id="icon_ventilador_sala" class="fa-solid fa-arrow-up-from-water-pump fs-1"></i>
+                                    <div class="mt-3">
+                                        <input id="btn_bomba_agua" type="checkbox" checked data-toggle="toggle"
+                                            data-size="xs">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIM Card -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Irrigação</div>
+                                    <i id="icon_irrigacao" class="fa-solid fa-faucet fs-1"></i>
+                                    <!-- fa-faucet-drip-->
+                                    <div class="mt-3">
+                                        <input id="btn_irrigacao" type="checkbox" checked data-toggle="toggle"
+                                            data-size="xs" data-onstyle="success">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIM Card -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Nível bateria</div>
+                                    <i id="icon_bateria" class="fas fa-solid fa-battery-three-quarters fs-1"></i>
+                                    <div class="mt-3">
+                                        <span id="bateria">...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIM Card -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Nível umidade</div>
+                                    <i id="icon_nivel_umidade" class="fas fa-solid fa-water fs-1"></i>
+                                    <div class="mt-3">
+                                        <span id="status_umidade">...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIM Card -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Luminosidade</div>
+                                    <i id="icon_lampada_sala" class="fas fa-solid fa-cloud-sun fs-1"></i>
+                                    <div class="mt-3">
+                                        <span id="status_luminosidade">...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIM Card -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Nível aguá</div>
+                                    <i id="i" class="fas fs-1">💧</i>
+                                    <div class="mt-3">
+                                        <span id="nivel_agua">...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIM Card -->
+
+                        <!-- Card -->
+                        <div class="col">
+                            <div class="card aero-card">
+                                <div class="card-body text-center">
+                                    <div class="card-title aero-card-title">Eficiência</div>
+                                    <i id="" class="fas fa-solid fa-bolt fs-1"></i>
+                                    <div class="mt-3">
+                                        <span id="nivel_eficiencia">...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--FIM Card -->
+
                     </div>
-                    <div class="_dividerLong_bbf3l_470"></div>
-                    
+                </div>
+
             </div>
+
         </div>
     </div>
+
     <script src="js/bootstrap-5.3.7/bootstrap.bundle.min.js"></script>
-    <script src="/js/clima.js"></script>
+    <script src="js/clima.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const btn_sala = document.getElementById('btn_sala');
@@ -165,19 +295,19 @@
             /* Inicia uma instância com o broker e salva no
             objeto cliente */
             const cliente = mqtt.connect(broker, options);
-            const sala = 'larDigital/maquete/luz/sala';
-            const quarto = 'larDigital/maquete/luz/quarto';
-            const cozinha = 'larDigital/maquete/luz/cozinha';
-            const passarela = 'larDigital/maquete/luz/passarela';
-            const jardim = 'larDigital/maquete/luz/jardim';
-            const irrigacao = 'larDigital/maquete/irrigacao';
-            const status_bomba_agua = 'maquete/sistema/bomba_agua';
-            const nivel_bateria = 'maquete/sistema/nivel_umidade';
-            const topico_bateria = 'maquete/energia/nivel_bateria';
-            const nivel_umidade = 'maquete/sistema/nivel_umidade';
-            const nivel_luminosidade = 'maquete/ambiente/luminosidade';
-            const nivel_agua = 'maquete/sistema/nivel_agua';
-            const nivel_eficiencia = 'maquete/energia/eficiencia';
+            const sala = 'larFrutiger/maquete/luz/sala';
+            const quarto = 'larFrutiger/maquete/luz/quarto';
+            const cozinha = 'larFrutiger/maquete/luz/cozinha';
+            const passarela = 'larFrutiger/maquete/luz/passarela';
+            const jardim = 'larFrutiger/maquete/luz/jardim';
+            const irrigacao = 'larFrutiger/maquete/irrigacao';
+            const status_bomba_agua = 'larFrutiger/maquete/sistema/bomba_agua';
+            const nivel_bateria = 'larFrutiger/maquete/sistema/nivel_umidade';
+            const topico_bateria = 'larFrutiger/maquete/energia/nivel_bateria';
+            const nivel_umidade = 'larFrutiger/maquete/sistema/nivel_umidade';
+            const nivel_luminosidade = 'larFrutiger/maquete/ambiente/luminosidade';
+            const nivel_agua = 'larFrutiger/maquete/sistema/nivel_agua';
+            const nivel_eficiencia = 'larFrutiger/maquete/energia/eficiencia';
             /* flags de situação dos botões */
             let status_btn_sala = false;
             let status_btn_quarto = false;
