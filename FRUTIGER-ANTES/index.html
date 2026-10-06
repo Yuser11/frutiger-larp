@@ -17,6 +17,7 @@ Fontes:
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="frutiger.css" />
 
     <link
@@ -31,22 +32,334 @@ Fontes:
   </head>
 
   <body>
-    <div class="container-fluid">
-      <div class="container">
-        <h2>
-          Broker: <i id="status_broker" class="fa-solid fa-power-off"></i>
-        </h2>
-        <div class="row mt-3">
-          <div class="col-12 col-md-3 clima transparencia">
-            <div id="cidade" class="h2 p-1"></div>
-            <div id="condicao" class="h4 p-1">Condição: Buscando...</div>
-            <div id="temperatura" class="h4 p-1">Temperatura: Buscando...</div>
-            <div id="umidade" class="h4 p-1">Umidade: Buscando...</div>
-          </div>
+    <div class="w-100">
+      <h2>Broker: <i id="status_broker" class="fa-solid fa-power-off"></i></h2>
+      <div class="w-100">
+        <div class="col-12 col-md-3 clima transparencia">
+          <div id="cidade" class="h2 p-1"></div>
+          <div id="condicao" class="h4 p-1">Condição: Buscando...</div>
+          <div id="temperatura" class="h4 p-1">Temperatura: Buscando...</div>
+          <div id="umidade" class="h4 p-1">Umidade: Buscando...</div>
+        </div>
 
-          <div class="main-box">
-            <div class="box-wrapper">
-              <!-- <div class="tabs">
+        <div class="body-container w-100">
+          <div class="side-bar">
+            <div class="store-icon-container">
+              <div class="store-icon"><img src="/icons/globe.webp" /></div>
+            </div>
+            <div class="side-bar-welcome">FrutigerOS Beta</div>
+            <div class="side-divider"></div>
+            <div class="button-container">
+              <a class="skeuButton" href="/" data-discover="true"
+                ><img class="icon" src="/icons/login.webp" />
+                <div class="skeuButtonBody">Home</div></a
+              ><a
+                class="skeuButton"
+                href="https://www.craftedbyarjun.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><img class="icon" src="/icons/profile.webp" />
+                <div class="skeuButtonBody">My Portfolio</div></a
+              ><a
+                class="skeuButton"
+                href="https://www.instagram.com/xpromised_futurex/"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><img class="icon" src="/icons/instagram.webp" />
+                <div class="skeuButtonBody">Aero Insta</div></a
+              >
+              <div class="skeuButton">
+                <img class="icon" src="/icons/cartIcon.webp" />
+                <div class="skeuButtonBody">Shop</div>
+              </div>
+            </div>
+            <div class="side-divider"></div>
+            <div class="grid">
+              <div class="button">
+                <img
+                  class="icon"
+                  src="/icons/information.webp"
+                  style="width: 3.3rem"
+                />
+              </div>
+              <div class="button">
+                <img
+                  class="icon"
+                  src="/icons/musica.webp"
+                  style="width: 3.6rem"
+                />
+              </div>
+              <div class="button">
+                <img
+                  class="icon"
+                  src="/icons/pallette.webp"
+                  style="width: 3.5rem"
+                />
+              </div>
+              <div class="button">
+                <img
+                  class="icon"
+                  src="/icons/wallpaper.webp"
+                  style="width: 3.7rem"
+                />
+              </div>
+            </div>
+            <div class="side-divider"></div>
+            <a
+              class="subtext"
+              href="https://www.craftedbyarjun.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Website Created By Arjun</a
+            >
+          </div>
+          <div class="box-wrapper">
+            <div class="tabs">
+              <a class="tab active" href="/" data-discover="true"
+                ><img class="icon" src="/icons/globe.webp" />
+                <div>Home</div></a
+              ><a class="tab" href="/about" data-discover="true"
+                ><img class="icon" src="/icons/information.webp" />
+                <div>About</div></a
+              ><a class="tab" href="/resources" data-discover="true"
+                ><img class="icon" src="/icons/globe2.webp" />
+                <div>Resources</div></a
+              ><a class="tab" href="/discover" data-discover="true"
+                ><img class="icon" src="/icons/search.webp" />
+                <div>Discover</div></a
+              ><a class="tab" href="/weather" data-discover="true"
+                ><img class="icon" src="/icons/weather.webp" />
+                <div>Weather</div></a
+              ><a class="tab" href="/msn" data-discover="true"
+                ><img class="icon" src="/icons/msnGrey.webp" />
+                <div>MSN</div></a
+              ><a class="tab" href="/apps" data-discover="true"
+                ><img class="icon" src="/icons/msnGrey.webp" />
+                <div>Mini Apps</div></a
+              ><a class="tab" href="/guestbook" data-discover="true"
+                ><img class="icon" src="/icons/credits.webp" />
+                <div>Guest Book</div></a
+              >
+            </div>
+            <div class="shop-button-wrapper">
+              <img class="shop-modal" src="icons/cartIcon.webp" />
+            </div>
+            <div class="dropdown-wrapper">
+              <div class="dropdown">
+                <div class="dropdown-selected">
+                  <img class="dropdown-icon" src="/icons/globe.webp" /><span
+                    >Home</span
+                  >
+                </div>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item active" href="/" data-discover="true"
+                    ><img class="dropdown-icon" src="/icons/globe.webp" /><span
+                      >Home</span
+                    ></a
+                  ><a class="dropdown-item" href="/about" data-discover="true"
+                    ><img
+                      class="dropdown-icon"
+                      src="/icons/information.webp"
+                    /><span>About</span></a
+                  ><a
+                    class="dropdown-item"
+                    href="/resources"
+                    data-discover="true"
+                    ><img class="dropdown-icon" src="/icons/globe2.webp" /><span
+                      >Resources</span
+                    ></a
+                  ><a
+                    class="dropdown-item"
+                    href="/discover"
+                    data-discover="true"
+                    ><img class="dropdown-icon" src="/icons/search.webp" /><span
+                      >Discover</span
+                    ></a
+                  ><a class="dropdown-item" href="/weather" data-discover="true"
+                    ><img
+                      class="dropdown-icon"
+                      src="/icons/weather.webp"
+                    /><span>Weather</span></a
+                  ><a class="dropdown-item" href="/msn" data-discover="true"
+                    ><img
+                      class="dropdown-icon"
+                      src="/icons/msnGrey.webp"
+                    /><span>MSN</span></a
+                  ><a class="dropdown-item" href="/apps" data-discover="true"
+                    ><img
+                      class="dropdown-icon"
+                      src="/icons/msnGrey.webp"
+                    /><span>Mini Apps</span></a
+                  ><a
+                    class="dropdown-item"
+                    href="/guestbook"
+                    data-discover="true"
+                    ><img
+                      class="dropdown-icon"
+                      src="/icons/credits.webp"
+                    /><span>Guest Book</span></a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="main-box">
+              <div class="close-bar">Toggle Sidebar</div>
+              <div style="min-height: 0px">
+                <div style="position: relative; opacity: 1">
+
+                  <header class="main-title">
+                    <h1>Welcome to The Frutiger Aero Hub™</h1>
+                  </header>
+                  <div class="divider"></div>
+                  <main class="main-text">
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: -2rem;
+                      "
+                    >
+                      <figure class="mascot-image-container">
+                        <div class="speech-bubble-container">
+                          <div class="speech-bubble fade-in">
+                            i'm teddy! i can guide you through this page.
+                          </div>
+                        </div>
+                        <img
+                          class="mascot-overlay"
+                          src="/aero-images/bordered.webp"
+                        /><img
+                          class="mascot-bordered-image"
+                          src="/aero-images/teddy_guide.webp"
+                        />
+                      </figure>
+                    </div>
+                    <p class="mobile-warning">
+                      PSSST hey mobile user! This site is much better on PC and
+                      is intended to be used on PC! I did spend a long time
+                      making it work on mobile though so dont worry &lt;3, but
+                      if you get the chance check it out on ur laptop or sumn
+                    </p>
+                    <p>
+                      <span class="welcome-span"
+                        >Welcome to the Frutiger Aero Hub™!
+                      </span>
+                      This is a website dedicated to the Frutiger Aero aesthetic
+                      and its fans &amp; creators, it contains collections of
+                      mini apps to use, resources &amp; archives which you can
+                      view in the
+                      <span class="tab-span">Tabs</span> above. It will also act
+                      as a hub for other users to share their own Frutiger Aero
+                      projects. Teddy the Aero mascot will guide you through the
+                      page &lt;3
+                    </p>
+                    <p>
+                      The site has been developed with my custom design style
+                      with plenty of fun features and easter eggs (you can view
+                      some on the side bar buttons). It's going to act as my
+                      final tribute to the aesthetic and my FA inspired design
+                      style.
+                    </p>
+                    <p>
+                      I have opened this site very recently and plan to
+                      iteratively add more resources and tabs overtime, its in
+                      BETA so please contact me (arjun@frutiger-aero.online) if
+                      you have any suggestions or pieces of media to share!
+                    </p>
+                  </main>
+                  <div class="divider"></div>
+                  <nav class="button-grid">
+                    <div class="large-button">
+                     <div class="card-body text-center">
+                    <div class="card-title">Sala</div>
+                    <i
+                      id="icon_lampada_sala"
+                      class="fas fa-lightbulb fs-1 text-warning"
+                    ></i>
+                    <div>
+                      <input
+                        id="btn_sala"
+                        type="checkbox"
+                        checked
+                        data-toggle="toggle"
+                        data-size="xs"
+                      />
+                    </div>
+                  </div>
+                    </div>
+
+
+                    <div class="large-button disable">
+                      <img class="icon" alt="" src="/icons/cartIcon.webp" />
+                      <div class="text">
+                        <div>Frutiger Shop</div>
+                        <div class="metric">Coming Soon!</div>
+                      </div>
+                    </div>
+                    <a
+                      class="large-button"
+                      href="https://www.reddit.com/r/FrutigerAero/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><img
+                        class="icon"
+                        alt=""
+                        src="/icons/aeroorbNakedAsf.webp"
+                      />
+                      <div class="text">
+                        <div>r/FrutigerAero Subreddit</div>
+                        <div class="metric">100k+ Members</div>
+                      </div></a
+                    ><a
+                      class="large-button"
+                      href="https://frutigeraeroarchive.org/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><img
+                        class="icon"
+                        alt=""
+                        src="/icons/frutigerAeroArchive.webp"
+                        style="
+                          width: 3rem;
+                          padding-right: 1rem;
+                          padding-left: 0.75rem;
+                        "
+                      />
+                      <div class="text">
+                        <div>Frutiger Aero Archive</div>
+                        <div class="metric">An amazing Aero archive site</div>
+                      </div></a
+                    ><a
+                      class="large-button"
+                      href="https://www.craftedbyarjun.com/home"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      ><img
+                        class="icon"
+                        alt=""
+                        src="/icons/login.webp"
+                        style="
+                          width: 3.5rem;
+                          padding-right: 0.75rem;
+                          padding-left: 0.75rem;
+                        "
+                      />
+                      <div class="text">
+                        <div>Aero Google Search</div>
+                        <div class="metric">A cool aero browser</div>
+                      </div></a
+                    >
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="main-box">
+          <div class="box-wrapper">
+            <!-- <div class="tabs">
                 <a class="tab" href="/" data-discover="true"
                   ><img class="icon" src="/icons/globe.webp" />
                   <div>Home</div></a
@@ -73,352 +386,259 @@ Fontes:
                   <div>Guest Book</div></a
                 >
               </div> -->
-              <div class="shop-button-wrapper">
-                <img class="shop-modal" src="icons/cartIcon.webp" />
-              </div>
-              <div class="dropdown-wrapper">
-                <div class="dropdown">
-                  <div class="dropdown-selected">
-                    <img class="dropdown-icon" src="/icons/globe.webp" /><span
-                      >Home</span
-                    >
-                  </div>
-                </div>
-              </div>
-              <h2 class="mb-3">Ambientes:</h2>
-              <div
-                class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 frutiger-cards"
-              >
-                <!-- Card Sala -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Sala</div>
-                      <i
-                        id="icon_lampada_sala"
-                        class="fas fa-lightbulb fs-1 text-warning"
-                      ></i>
-                      <div>
-                        <input
-                          id="btn_sala"
-                          type="checkbox"
-                          checked
-                          data-toggle="toggle"
-                          data-size="xs"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card Sala -->
-                <!-- Card -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Quarto</div>
-                      <i
-                        id="icon_lampada_quarto"
-                        class="fas fa-lightbulb fs-1"
-                      ></i>
-                      <div>
-                        <input
-                          id="btn_quarto"
-                          type="checkbox"
-                          checked
-                          data-toggle="toggle"
-                          data-size="xs"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card -->
-                <!-- Card -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Cozinha</div>
-                      <i
-                        id="icon_lampada_cozinha"
-                        class="fas fa-lightbulb fs-1"
-                      ></i>
-                      <div>
-                        <input
-                          id="btn_cozinha"
-                          type="checkbox"
-                          checked
-                          data-toggle="toggle"
-                          data-size="xs"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card -->
-                <!-- Card -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Passarela</div>
-                      <i
-                        id="icon_lampada_passarela"
-                        class="fas fa-lightbulb fs-1"
-                      ></i>
-                      <div>
-                        <input
-                          id="btn_passarela"
-                          type="checkbox"
-                          checked
-                          data-toggle="toggle"
-                          data-size="xs"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card -->
-                <!-- Card -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Jardim</div>
-                      <i
-                        id="icon_lampada_jardim"
-                        class="fas fa-lightbulb fs-1"
-                      ></i>
-                      <div>
-                        <input
-                          id="btn_jardim"
-                          type="checkbox"
-                          checked
-                          data-toggle="toggle"
-                          data-size="xs"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card -->
-                <!-- Card -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Bomba Água</div>
-                      <i
-                        id="icon_ventilador_sala"
-                        class="fa-solid fa-arrow-up-from-water-pump fs-1"
-                      ></i>
-                      <div>
-                        <input
-                          id="btn_bomba_agua"
-                          type="checkbox"
-                          checked
-                          data-toggle="toggle"
-                          data-size="xs"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card -->
-                <!-- Card Sala -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Irrigação</div>
-                      <i
-                        id="icon_irrigacao"
-                        class="fa-solid fa-faucet fs-1"
-                      ></i>
-                      <!-- fa-faucet-drip-->
-                      <div>
-                        <input
-                          id="btn_irrigacao"
-                          type="checkbox"
-                          checked
-                          data-toggle="toggle"
-                          data-size="xs"
-                          data-onstyle="success"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card Sala -->
-                <!-- Card Sala -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Nível bateria</div>
-                      <i
-                        id="icon_bateria"
-                        class="fas fa-solid fa-battery-three-quarters fs-1"
-                      ></i>
-                      <div>
-                        <span id="bateria">...</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card Sala -->
-                <!-- Card Sala -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Nível umidade</div>
-                      <i
-                        id="icon_nivel_umidade"
-                        class="fas fa-solid fa-water fs-1"
-                      ></i>
-                      <div>
-                        <span id="status_umidade">...</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card Sala -->
-                <!-- Card Sala -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Luminosidade</div>
-                      <i
-                        id="icon_lampada_sala"
-                        class="fas fa-solid fa-cloud-sun fs-1"
-                      ></i>
-                      <div>
-                        <span id="status_luminosidade">...</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card Sala -->
-                <!-- Card Sala -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Nível aguá</div>
-                      <i id="i" class="fas fs-1">💧</i>
-                      <div>
-                        <span id="nivel_agua">...</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card Sala -->
-                <!-- Card Sala -->
-
-                <div class="col">
-                  <div class="card">
-                    <div class="card-body text-center">
-                      <div class="card-title">Eficiência</div>
-                      <i id="" class="fas fa-solid fa-bolt fs-1"></i>
-                      <div>
-                        <span id="nivel_eficiencia">...</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--FIM Card Sala -->
-              </div>
-              <div class="close-bar">Toggle Sidebar</div>
-              <div style="min-height: 0px"></div>
+            <div class="shop-button-wrapper">
+              <img class="shop-modal" src="icons/cartIcon.webp" />
             </div>
-            <nav class="button-grid">
-              <a class="large-button" target="_blank" rel="noopener noreferrer">
-                <div class="card-title">Cozinha</div>
-                <div class="d-flex">
-                  <div>
-                    <input
-                      id="btn_cozinha"
-                      type="checkbox"
-                      checked
-                      data-toggle="toggle"
-                      data-size="xs"
-                    />
-                  </div>
-                </div>
-              </a>
-              <div class="large-button disable">
-                <img class="icon" alt="" src="/icons/cartIcon.webp" />
-                <div class="text">
-                  <div>Frutiger Shop</div>
-                  <div class="metric">Coming Soon!</div>
+            <div class="dropdown-wrapper">
+              <div class="dropdown">
+                <div class="dropdown-selected">
+                  <img class="dropdown-icon" src="/icons/globe.webp" /><span
+                    >Home</span
+                  >
                 </div>
               </div>
-              <a
-                class="large-button"
-                href="https://www.reddit.com/r/FrutigerAero/"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><img class="icon" alt="" src="/icons/aeroorbNakedAsf.webp" />
-                <div class="text">
-                  <div>r/FrutigerAero Subreddit</div>
-                  <div class="metric">100k+ Members</div>
-                </div></a
-              ><a
-                class="large-button"
-                href="https://frutigeraeroarchive.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><img
-                  class="icon"
-                  alt=""
-                  src="/icons/frutigerAeroArchive.webp"
-                  style="
-                    width: 3rem;
-                    padding-right: 1rem;
-                    padding-left: 0.75rem;
-                  "
-                />
-                <div class="text">
-                  <div>Frutiger Aero Archive</div>
-                  <div class="metric">An amazing Aero archive site</div>
-                </div></a
-              ><a
-                class="large-button"
-                href="https://www.craftedbyarjun.com/home"
-                target="_blank"
-                rel="noopener noreferrer"
-                ><img
-                  class="icon"
-                  alt=""
-                  src="/icons/login.webp"
-                  style="
-                    width: 3.5rem;
-                    padding-right: 0.75rem;
-                    padding-left: 0.75rem;
-                  "
-                />
-                <div class="text">
-                  <div>Aero Google Search</div>
-                  <div class="metric">A cool aero browser</div>
-                </div></a
-              >
-            </nav>
+            </div>
+            <h2 class="mb-3">Ambientes:</h2>
+            <div
+              class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 frutiger-cards"
+            >
+              <!-- Card Sala -->
+
+              <div class="col">
+                <div class="card"></div>
+              </div>
+
+              <!--FIM Card Sala -->
+              <!-- Card -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Quarto</div>
+                    <i
+                      id="icon_lampada_quarto"
+                      class="fas fa-lightbulb fs-1"
+                    ></i>
+                    <div class="botao-toggle">
+                      <input
+                        id="btn_quarto"
+                        type="checkbox"
+                        checked
+                        data-toggle="toggle"
+                        data-size="xs"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card -->
+              <!-- Card -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Cozinha</div>
+                    <i
+                      id="icon_lampada_cozinha"
+                      class="fas fa-lightbulb fs-1"
+                    ></i>
+                    <div>
+                      <input
+                        id="btn_cozinha"
+                        type="checkbox"
+                        checked
+                        data-toggle="toggle"
+                        data-size="xs"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card -->
+              <!-- Card -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Passarela</div>
+                    <i
+                      id="icon_lampada_passarela"
+                      class="fas fa-lightbulb fs-1"
+                    ></i>
+                    <div>
+                      <input
+                        id="btn_passarela"
+                        type="checkbox"
+                        checked
+                        data-toggle="toggle"
+                        data-size="xs"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card -->
+              <!-- Card -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Jardim</div>
+                    <i
+                      id="icon_lampada_jardim"
+                      class="fas fa-lightbulb fs-1"
+                    ></i>
+                    <div>
+                      <input
+                        id="btn_jardim"
+                        type="checkbox"
+                        checked
+                        data-toggle="toggle"
+                        data-size="xs"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card -->
+              <!-- Card -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Bomba Água</div>
+                    <i
+                      id="icon_ventilador_sala"
+                      class="fa-solid fa-arrow-up-from-water-pump fs-1"
+                    ></i>
+                    <div>
+                      <input
+                        id="btn_bomba_agua"
+                        type="checkbox"
+                        checked
+                        data-toggle="toggle"
+                        data-size="xs"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card -->
+              <!-- Card Sala -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Irrigação</div>
+                    <i id="icon_irrigacao" class="fa-solid fa-faucet fs-1"></i>
+                    <!-- fa-faucet-drip-->
+                    <div>
+                      <input
+                        id="btn_irrigacao"
+                        type="checkbox"
+                        checked
+                        data-toggle="toggle"
+                        data-size="xs"
+                        data-onstyle="success"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card Sala -->
+              <!-- Card Sala -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Nível bateria</div>
+                    <i
+                      id="icon_bateria"
+                      class="fas fa-solid fa-battery-three-quarters fs-1"
+                    ></i>
+                    <div>
+                      <span id="bateria">...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card Sala -->
+              <!-- Card Sala -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Nível umidade</div>
+                    <i
+                      id="icon_nivel_umidade"
+                      class="fas fa-solid fa-water fs-1"
+                    ></i>
+                    <div>
+                      <span id="status_umidade">...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card Sala -->
+              <!-- Card Sala -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Luminosidade</div>
+                    <i
+                      id="icon_lampada_sala"
+                      class="fas fa-solid fa-cloud-sun fs-1"
+                    ></i>
+                    <div>
+                      <span id="status_luminosidade">...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card Sala -->
+              <!-- Card Sala -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Nível aguá</div>
+                    <i id="i" class="fas fs-1">💧</i>
+                    <div>
+                      <span id="nivel_agua">...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card Sala -->
+              <!-- Card Sala -->
+
+              <div class="col">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <div class="card-title">Eficiência</div>
+                    <i id="" class="fas fa-solid fa-bolt fs-1"></i>
+                    <div>
+                      <span id="nivel_eficiencia">...</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--FIM Card Sala -->
+            </div>
+            <div class="close-bar">Toggle Sidebar</div>
+            <div style="min-height: 0px"></div>
           </div>
         </div>
       </div>

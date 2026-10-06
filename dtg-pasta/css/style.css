@@ -1,0 +1,12 @@
+.clima{
+    min-height: 300px; /* Altura minima */
+}
+
+ .card {
+        min-height: 150px !important;
+        align-items: center !important;
+    }
+
+.transparencia{
+    opacity: 0.5;
+}
